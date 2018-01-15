@@ -4,7 +4,7 @@ TCC模式属于分布式柔性事务的一种，基于两阶段，达到最终�
   * 主业务服务负责发起并完成整个业务活动
   * 从业务服务负责提供TCC类型操作
   * 业务活动管理器负责控制业务活动的一致性，它登记业务活动中的操作，并在业务活动中提交时确认所有的TCC型操作的Confirm操作，在业务活动取消时调用所有TCC型操作的Cancel操作。
- 以TCC开源框架(https://github.com/changmingxie/tcc-transaction)为例，介绍TCC的业务活动提交，确认，回滚等操作。
+ 以TCC开源框架[tcc-transaction](https://github.com/changmingxie/tcc-transaction)为例，介绍TCC的业务活动提交，确认，回滚等操作。
 
 在框架内部定义了两个拦截切面，对业务活动进行增强，第一个切面负责全局事务的开启，提交等操作，第二个切面服务登记全局事务参与者，对从业务服务提供者的try，confirm，cancel按照场景进行分别调用。
 以下是从主业务角度和从业务角度分别来看下TCC操作的流程。
